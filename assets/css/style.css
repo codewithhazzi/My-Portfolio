@@ -550,14 +550,14 @@
     background: radial-gradient(circle at top right, #c3f0e8 0%, #a8d8ea 35%, #d4e8f5 70%, #f0f7ff 100%);
     opacity: 0;
     pointer-events: none;
-    transform: scale(1.04);
-    transition: opacity 0.35s ease, transform 0.35s ease;
+    transform: translateY(100vh);
+    transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .work-modal.is-open {
     opacity: 1;
     pointer-events: all;
-    transform: scale(1);
+    transform: translateY(0);
 }
 
 /* Fixed header */
@@ -681,14 +681,14 @@
     background: radial-gradient(circle at top left, #ffd6e7 0%, #ffb3c6 25%, #ffd9b3 70%, #fff3e0 100%);
     opacity: 0;
     pointer-events: none;
-    transform: scale(1.04);
-    transition: opacity 0.35s ease, transform 0.35s ease;
+    transform: translateY(100vh);
+    transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .about-modal.is-open {
     opacity: 1;
     pointer-events: all;
-    transform: scale(1);
+    transform: translateY(0);
 }
 
 /* Fixed header: block centered, text left */
@@ -903,14 +903,14 @@
     background: radial-gradient(circle at top right, #f9e98a 0%, #f0c060 30%, #a8d8ea 70%, #d0eaf8 100%);
     opacity: 0;
     pointer-events: none;
-    transform: scale(1.04);
-    transition: opacity 0.35s ease, transform 0.35s ease;
+    transform: translateY(100vh);
+    transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .contact-modal.is-open {
     opacity: 1;
     pointer-events: all;
-    transform: scale(1);
+    transform: translateY(0);
 }
 
 /* Close button */
@@ -925,13 +925,17 @@
     color: #111;
     line-height: 1;
     font-weight: 300;
-    transition: transform 0.2s;
+    transition: color 0.3s ease;
     z-index: 10005;
     padding: 0.5rem;
 }
 
 .contact-close:hover {
-    transform: scale(1.3) rotate(90deg);
+    background: -webkit-linear-gradient(135deg, #F05F57 10%, #360940 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
 }
 
 /* Content */
@@ -1182,5 +1186,11 @@
 @media (max-width: 768px) {
     .hide-on-mobile {
         display: none !important;
+    }
+    
+    .contact-close {
+        font-size: 1.8rem;
+        top: 1rem;
+        right: 1.5rem;
     }
 }
