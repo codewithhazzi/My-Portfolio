@@ -249,9 +249,82 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === modal) closeModal();
     });
 
+    // ==========================================
+    // Project Details Popup Logic
+    // ==========================================
+    const projectPopup = document.getElementById('project-popup');
+    const projectPopupContent = document.getElementById('project-popup-content');
+    const closeProjectPopupBtn = document.getElementById('close-project-popup');
+
+    const popupTitle = document.getElementById('popup-title');
+    const popupDesc = document.getElementById('popup-desc');
+    const popupTag = document.getElementById('popup-tag');
+    const popupLive = document.getElementById('popup-link-live');
+    const popupGithub = document.getElementById('popup-link-github');
+
+    const projectData = {
+        1: {
+            title: "Portfolio Website",
+            tag: "HTML / CSS / JS",
+            desc: "A modern, animated personal portfolio featuring a glassmorphic hero section, draggable navigation bar, full-page animated modals, and CSS marquee banners. Built entirely with Vanilla JS, HTML, and custom CSS without relying on heavy frameworks.",
+            live: "#",
+            github: "https://github.com/"
+        },
+        2: {
+            title: "E-Commerce Dashboard",
+            tag: "React JS",
+            desc: "A fully responsive admin dashboard designed for managing products, tracking orders, and viewing analytics. Features real-time data visualization through interactive charts, intuitive UI components, and state management using React Context API.",
+            live: "#",
+            github: "https://github.com/"
+        },
+        3: {
+            title: "UI Component Library",
+            tag: "Tailwind CSS",
+            desc: "A reusable, open-source collection of highly accessible and responsive UI components. Includes advanced form elements, dynamic tables, interactive modals, and animated buttons, all meticulously styled with Tailwind CSS utility classes.",
+            live: "#",
+            github: "https://github.com/"
+        }
+    };
+
+    window.openProjectPopup = function (id) {
+        const data = projectData[id];
+        if (!data) return;
+
+        popupTitle.textContent = data.title;
+        popupTag.textContent = data.tag;
+        popupDesc.textContent = data.desc;
+        popupLive.href = data.live;
+        popupGithub.href = data.github;
+
+        projectPopup.classList.remove('opacity-0', 'pointer-events-none');
+        projectPopupContent.classList.remove('scale-95');
+        projectPopupContent.classList.add('scale-100');
+
+        // Re-initialize icons for the new content
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+    };
+
+    function closeProjectPopup() {
+        projectPopup.classList.add('opacity-0', 'pointer-events-none');
+        projectPopupContent.classList.remove('scale-100');
+        projectPopupContent.classList.add('scale-95');
+    }
+
+    closeProjectPopupBtn.addEventListener('click', closeProjectPopup);
+
+    projectPopup.addEventListener('click', (e) => {
+        if (e.target === projectPopup) closeProjectPopup();
+    });
+
     // Close on Escape key
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') { closeModal(); closeAboutModal(); }
+        if (e.key === 'Escape') {
+            closeProjectPopup();
+            closeModal();
+            closeAboutModal();
+        }
     });
 
     // ==========================================
@@ -310,4 +383,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') { closeModal(); closeAboutModal(); closeWorkModal(); }
     });
+
+    // Initialize Lucide Icons on page load
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
 });

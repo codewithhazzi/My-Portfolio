@@ -389,7 +389,7 @@
     cursor: grab;
     user-select: none;
     padding: 1rem 1.5rem;
-    border-radius: 1rem;
+    border-radius: 0.25rem;
     background: rgba(255, 255, 255, 0.12);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -1183,11 +1183,31 @@
     mask: radial-gradient(circle at top left, black, transparent);
 }
 
+/* =============================================
+   Pop-up Animated Gradient Border
+   ============================================= */
+#project-popup-content::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 3px;
+    /* border thickness */
+    background: linear-gradient(270deg, #F05F57, #fc8c00, #fcff9e, #360940, #F05F57);
+    background-size: 400% 400%;
+    animation: gradientBorderSpin 3s ease infinite;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
 @media (max-width: 768px) {
     .hide-on-mobile {
         display: none !important;
     }
-    
+
     .contact-close {
         font-size: 1.8rem;
         top: 1rem;
