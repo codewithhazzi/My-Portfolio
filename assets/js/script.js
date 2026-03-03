@@ -262,29 +262,87 @@ document.addEventListener('DOMContentLoaded', () => {
     const popupLive = document.getElementById('popup-link-live');
     const popupGithub = document.getElementById('popup-link-github');
 
+    // Carousel Elements
+    const popupImage = document.getElementById('popup-image');
+    const prevImgBtn = document.getElementById('prev-project-img');
+    const nextImgBtn = document.getElementById('next-project-img');
+    const carouselIndicators = document.getElementById('carousel-indicators');
+
+    let currentImages = [];
+    let currentImgIndex = 0;
+
     const projectData = {
         1: {
             title: "Portfolio Website",
             tag: "HTML / CSS / JS",
             desc: "A modern, animated personal portfolio featuring a glassmorphic hero section, draggable navigation bar, full-page animated modals, and CSS marquee banners. Built entirely with Vanilla JS, HTML, and custom CSS without relying on heavy frameworks.",
             live: "#",
-            github: "https://github.com/"
+            github: "https://github.com/",
+            images: ["assets/images/project1-1.png", "assets/images/project1-2.png"]
         },
         2: {
             title: "E-Commerce Dashboard",
             tag: "React JS",
             desc: "A fully responsive admin dashboard designed for managing products, tracking orders, and viewing analytics. Features real-time data visualization through interactive charts, intuitive UI components, and state management using React Context API.",
             live: "#",
-            github: "https://github.com/"
+            github: "https://github.com/",
+            images: ["assets/images/project2-1.png"]
         },
         3: {
             title: "UI Component Library",
             tag: "Tailwind CSS",
             desc: "A reusable, open-source collection of highly accessible and responsive UI components. Includes advanced form elements, dynamic tables, interactive modals, and animated buttons, all meticulously styled with Tailwind CSS utility classes.",
             live: "#",
-            github: "https://github.com/"
+            github: "https://github.com/",
+            images: ["assets/images/project3-1.png"]
         }
     };
+
+    function updateCarousel() {
+        if (!currentImages.length) return;
+
+        popupImage.style.opacity = '0';
+        setTimeout(() => {
+            popupImage.src = currentImages[currentImgIndex];
+            popupImage.style.opacity = '1';
+        }, 300);
+
+        // Update indicators
+        const dots = carouselIndicators.querySelectorAll('span');
+        dots.forEach((dot, idx) => {
+            if (idx === currentImgIndex) {
+                dot.classList.add('bg-white', 'w-4');
+                dot.classList.remove('bg-white/50', 'w-1.5');
+            } else {
+                dot.classList.remove('bg-white', 'w-4');
+                dot.classList.add('bg-white/50', 'w-1.5');
+            }
+        });
+
+        // Hide buttons if only one image
+        if (currentImages.length <= 1) {
+            prevImgBtn.classList.add('hidden');
+            nextImgBtn.classList.add('hidden');
+            carouselIndicators.classList.add('hidden');
+        } else {
+            prevImgBtn.classList.remove('hidden');
+            nextImgBtn.classList.remove('hidden');
+            carouselIndicators.classList.remove('hidden');
+        }
+    }
+
+    function nextImage() {
+        currentImgIndex = (currentImgIndex + 1) % currentImages.length;
+        updateCarousel();
+    }
+
+    function prevImage() {
+        currentImgIndex = (currentImgIndex - 1 + currentImages.length) % currentImages.length;
+        updateCarousel();
+    }
+
+    nextImgBtn.addEventListener('click', nextImage);
+    prevImgBtn.addEventListener('click', prevImage);
 
     window.openProjectPopup = function (id) {
         const data = projectData[id];
@@ -295,6 +353,21 @@ document.addEventListener('DOMContentLoaded', () => {
         popupDesc.textContent = data.desc;
         popupLive.href = data.live;
         popupGithub.href = data.github;
+
+        // Initialize Carousel
+        currentImages = data.images || [];
+        currentImgIndex = 0;
+
+        // Setup indicators
+        carouselIndicators.innerHTML = '';
+        currentImages.forEach((_, idx) => {
+            const dot = document.createElement('span');
+            dot.className = 'h-1.5 rounded-full transition-all duration-300 pointer-events-none ' +
+                (idx === 0 ? 'bg-white w-4' : 'bg-white/50 w-1.5');
+            carouselIndicators.appendChild(dot);
+        });
+
+        updateCarousel();
 
         projectPopup.classList.remove('opacity-0', 'pointer-events-none');
         projectPopupContent.classList.remove('scale-95');
