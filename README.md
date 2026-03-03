@@ -56,7 +56,7 @@ Portfolio/
 ## 📬 Contact
 
 - **Email:** [hanzlamasood@gmail.com](mailto:hanzlamasood@gmail.com)
-- **GitHub:** [github.com](https://github.com/)
+- **GitHub:** [github.com](https://github.com/codewithhazzi)
 - **LinkedIn:** [linkedin.com](https://linkedin.com/)
 
 ---
