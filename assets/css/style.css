@@ -1,0 +1,1186 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+.animated-gradient-bg {
+    background: #F05F57;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(135deg, #F05F57 10%, #360940 100%);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(135deg, #F05F57 10%, #360940 100%);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-size: 200% 200%;
+    animation: gradientShift 5s ease infinite;
+}
+
+/* =============================================
+   Floating Notification Tooltips
+   ============================================= */
+.tour-tooltip {
+    position: absolute;
+    background: #fff;
+    color: #111;
+    padding: 1rem 1.25rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    width: 240px;
+    z-index: 100;
+    text-align: left;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1));
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    cursor: default;
+}
+
+.tour-tooltip.is-visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.tooltip-content {
+    position: relative;
+    z-index: 2;
+}
+
+.tooltip-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.tooltip-desc {
+    font-size: 0.8rem;
+    color: #555;
+    margin-bottom: 0.85rem;
+    line-height: 1.4;
+}
+
+.tooltip-close {
+    background: linear-gradient(135deg, #F05F57, #360940);
+    color: #fff;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.tooltip-close:hover {
+    opacity: 0.9;
+}
+
+/* Clock Tooltip (Below the clock) */
+.tooltip-clock {
+    top: 100%;
+    right: 50%;
+    margin-top: 15px;
+    transform: translateX(50%) translateY(-10px);
+    animation: bounceTooltipClock 2s infinite ease-in-out;
+}
+
+.tooltip-clock.is-visible {
+    transform: translateX(50%) translateY(0);
+}
+
+.tooltip-clock::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    right: 30px;
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+}
+
+@keyframes bounceTooltipClock {
+
+    0%,
+    100% {
+        margin-top: 15px;
+    }
+
+    50% {
+        margin-top: 23px;
+    }
+}
+
+/* Navbar Tooltip (Above the navbar) */
+.tooltip-navbar {
+    bottom: 100%;
+    left: 50%;
+    margin-bottom: 15px;
+    transform: translateX(-50%) translateY(10px);
+    animation: bounceTooltipNavbar 2s infinite ease-in-out;
+}
+
+.tooltip-navbar.is-visible {
+    transform: translateX(-50%) translateY(0);
+}
+
+.tooltip-navbar::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 8px;
+    border-style: solid;
+    border-color: #fff transparent transparent transparent;
+}
+
+@keyframes bounceTooltipNavbar {
+
+    0%,
+    100% {
+        margin-bottom: 15px;
+    }
+
+    50% {
+        margin-bottom: 23px;
+    }
+}
+
+/* Upload BG Tooltip (Right of the button) */
+.tooltip-upload {
+    top: 50%;
+    left: 100%;
+    margin-left: 15px;
+    transform: translateY(-50%) translateX(-10px);
+    animation: bounceTooltipUpload 2s infinite ease-in-out;
+}
+
+.tooltip-upload.is-visible {
+    transform: translateY(-50%) translateX(0);
+}
+
+.tooltip-upload::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent #fff transparent transparent;
+}
+
+@keyframes bounceTooltipUpload {
+
+    0%,
+    100% {
+        margin-left: 15px;
+    }
+
+    50% {
+        margin-left: 23px;
+    }
+}
+
+
+
+/* =============================================
+   Hero Snowfall (behind blur overlay)
+   ============================================= */
+.hero-snow {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.hero-snow span {
+    position: absolute;
+    top: -10%;
+    display: block;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.65);
+    animation: heroSnowfall linear infinite;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+}
+
+.hero-snow span:nth-child(1) {
+    left: 3%;
+    width: 6px;
+    height: 6px;
+    animation-duration: 9s;
+    animation-delay: 0s;
+}
+
+.hero-snow span:nth-child(2) {
+    left: 9%;
+    width: 10px;
+    height: 10px;
+    animation-duration: 12s;
+    animation-delay: 1s;
+}
+
+.hero-snow span:nth-child(3) {
+    left: 15%;
+    width: 5px;
+    height: 5px;
+    animation-duration: 8s;
+    animation-delay: 2.5s;
+}
+
+.hero-snow span:nth-child(4) {
+    left: 22%;
+    width: 8px;
+    height: 8px;
+    animation-duration: 14s;
+    animation-delay: 0.5s;
+}
+
+.hero-snow span:nth-child(5) {
+    left: 28%;
+    width: 4px;
+    height: 4px;
+    animation-duration: 10s;
+    animation-delay: 3s;
+}
+
+.hero-snow span:nth-child(6) {
+    left: 35%;
+    width: 12px;
+    height: 12px;
+    animation-duration: 16s;
+    animation-delay: 1.5s;
+}
+
+.hero-snow span:nth-child(7) {
+    left: 41%;
+    width: 6px;
+    height: 6px;
+    animation-duration: 11s;
+    animation-delay: 4s;
+}
+
+.hero-snow span:nth-child(8) {
+    left: 47%;
+    width: 9px;
+    height: 9px;
+    animation-duration: 13s;
+    animation-delay: 0.8s;
+}
+
+.hero-snow span:nth-child(9) {
+    left: 54%;
+    width: 5px;
+    height: 5px;
+    animation-duration: 9s;
+    animation-delay: 2s;
+}
+
+.hero-snow span:nth-child(10) {
+    left: 60%;
+    width: 11px;
+    height: 11px;
+    animation-duration: 15s;
+    animation-delay: 3.5s;
+}
+
+.hero-snow span:nth-child(11) {
+    left: 66%;
+    width: 4px;
+    height: 4px;
+    animation-duration: 10s;
+    animation-delay: 1.2s;
+}
+
+.hero-snow span:nth-child(12) {
+    left: 72%;
+    width: 8px;
+    height: 8px;
+    animation-duration: 12s;
+    animation-delay: 5s;
+}
+
+.hero-snow span:nth-child(13) {
+    left: 77%;
+    width: 6px;
+    height: 6px;
+    animation-duration: 8s;
+    animation-delay: 0.3s;
+}
+
+.hero-snow span:nth-child(14) {
+    left: 82%;
+    width: 13px;
+    height: 13px;
+    animation-duration: 17s;
+    animation-delay: 2.2s;
+}
+
+.hero-snow span:nth-child(15) {
+    left: 87%;
+    width: 5px;
+    height: 5px;
+    animation-duration: 10s;
+    animation-delay: 4.5s;
+}
+
+.hero-snow span:nth-child(16) {
+    left: 91%;
+    width: 7px;
+    height: 7px;
+    animation-duration: 11s;
+    animation-delay: 1.8s;
+}
+
+.hero-snow span:nth-child(17) {
+    left: 95%;
+    width: 9px;
+    height: 9px;
+    animation-duration: 14s;
+    animation-delay: 3.8s;
+}
+
+.hero-snow span:nth-child(18) {
+    left: 19%;
+    width: 11px;
+    height: 11px;
+    animation-duration: 13s;
+    animation-delay: 6s;
+}
+
+.hero-snow span:nth-child(19) {
+    left: 45%;
+    width: 4px;
+    height: 4px;
+    animation-duration: 9s;
+    animation-delay: 7s;
+}
+
+.hero-snow span:nth-child(20) {
+    left: 68%;
+    width: 7px;
+    height: 7px;
+    animation-duration: 15s;
+    animation-delay: 5.5s;
+}
+
+@keyframes heroSnowfall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.9;
+    }
+
+    80% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* =============================================
+   Hero Draggable Clock
+   ============================================= */
+.hero-clock {
+    position: absolute;
+    top: calc(4rem + 0.75rem);
+    right: 2rem;
+    transform: none;
+    z-index: 15;
+    cursor: grab;
+    user-select: none;
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    text-align: center;
+    color: #fff;
+    /* Gradient spinning border via outline trick */
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.05);
+    transition: box-shadow 0.3s;
+}
+
+.hero-clock:active {
+    cursor: grabbing;
+}
+
+.hero-clock:hover {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.08);
+}
+
+.hero-clock-time {
+    font-family: 'Poppins', monospace;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+}
+
+.hero-clock-date {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    opacity: 0.8;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 0.2rem;
+}
+
+/* =============================================
+   Navbar Buttons — Gradient Animated Border
+   ============================================= */
+@keyframes gradientBorderSpin {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Wrapper trick: gradient border via pseudo backdrop */
+.navbar-btn-wrap {
+    position: relative;
+    display: inline-block;
+    padding: 2px;
+    border-radius: 0.25rem;
+    background: linear-gradient(270deg, #F05F57, #fc8c00, #fcff9e, #360940, #F05F57);
+    background-size: 400% 400%;
+    animation: gradientBorderSpin 3s ease infinite;
+    transition: transform 0.2s;
+}
+
+.navbar-btn-wrap:hover {
+    transform: scale(1.06);
+}
+
+.navbar-btn-wrap a,
+.navbar-btn-wrap button {
+    display: block;
+    background: #fff;
+    border: none !important;
+    border-radius: calc(0.25rem - 2px);
+    padding: 0.5rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    color: #111;
+    transition: background 0.2s, transform 0.2s;
+    white-space: nowrap;
+}
+
+.navbar-btn-wrap a:hover,
+.navbar-btn-wrap button:hover {
+    background: #f5f5f5;
+}
+
+/* =============================================
+   Marquee / Ticker Wrapper & Strips
+   ============================================= */
+.marquee-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+/* Each strip takes up as much space as its content needs */
+.marquee-strip {
+    display: inline-flex;
+    flex-shrink: 0;
+    white-space: nowrap;
+    gap: 2rem;
+    padding: 0 1rem;
+    font-weight: 700;
+    font-size: 1rem;
+    align-items: center;
+    will-change: transform;
+}
+
+/* Strip 1 starts at 0 and slides all the way left to -100% then loops */
+@keyframes ticker-left {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+/* Strip 2 starts at 0 (right behind strip 1) and does the same */
+/* Because two identical strips sit side by side it looks endless */
+.marquee-go-left {
+    animation: ticker-left 40s linear infinite;
+}
+
+/* Right direction: reverse */
+@keyframes ticker-right {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+.marquee-go-right {
+    animation: ticker-right 40s linear infinite;
+}
+
+/* =============================================
+   Work Modal
+   ============================================= */
+.work-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    background: radial-gradient(circle at top right, #c3f0e8 0%, #a8d8ea 35%, #d4e8f5 70%, #f0f7ff 100%);
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(1.04);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.work-modal.is-open {
+    opacity: 1;
+    pointer-events: all;
+    transform: scale(1);
+}
+
+/* Fixed header */
+.work-header {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 780px;
+    padding: 3rem 6vw 1.5rem;
+}
+
+.work-title {
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    font-weight: 900;
+    color: #111;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.1;
+}
+
+/* Scrollable body */
+.work-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 6vw 3rem;
+    max-width: 780px;
+    width: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
+}
+
+/* Each project row */
+.work-item {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.work-item:first-child {
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.work-item-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.work-item-left {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+}
+
+.work-num {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #e04c4c;
+    font-family: 'Poppins', sans-serif;
+    flex-shrink: 0;
+}
+
+.work-name {
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    font-weight: 700;
+    color: #111;
+    margin: 0;
+}
+
+.work-tag {
+    flex-shrink: 0;
+    padding: 0.3rem 0.8rem;
+    border: 1.5px solid #bbb;
+    border-radius: 0.4rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: #333;
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(4px);
+}
+
+.work-desc {
+    font-size: 0.92rem;
+    color: #444;
+    line-height: 1.65;
+    margin: 0;
+    max-width: 560px;
+}
+
+/* See more link */
+.work-more {
+    padding: 2rem 0 0;
+    text-align: center;
+}
+
+.work-more-link {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #111;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: opacity 0.2s;
+}
+
+.work-more-link:hover {
+    opacity: 0.6;
+}
+
+/* =============================================
+   About Modal
+   ============================================= */
+.about-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    background: radial-gradient(circle at top left, #ffd6e7 0%, #ffb3c6 25%, #ffd9b3 70%, #fff3e0 100%);
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(1.04);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.about-modal.is-open {
+    opacity: 1;
+    pointer-events: all;
+    transform: scale(1);
+}
+
+/* Fixed header: block centered, text left */
+.about-header {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 780px;
+    padding: 3rem 6vw 1.5rem;
+    position: relative;
+}
+
+/* Scrollable body — centered */
+.about-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 6vw 3rem;
+    max-width: 780px;
+    width: 100%;
+    margin: 0 auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+/* Left-side floating particles */
+.about-snowflakes {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 60px;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.about-snowflakes span {
+    position: absolute;
+    font-size: 1.2rem;
+    color: rgba(220, 80, 80, 0.3);
+    animation: floatLeft 10s linear infinite;
+}
+
+.about-snowflakes span:nth-child(1) {
+    top: 10%;
+    animation-delay: 0s;
+}
+
+.about-snowflakes span:nth-child(2) {
+    top: 25%;
+    animation-delay: 1.5s;
+}
+
+.about-snowflakes span:nth-child(3) {
+    top: 45%;
+    animation-delay: 3s;
+}
+
+.about-snowflakes span:nth-child(4) {
+    top: 60%;
+    animation-delay: 0.8s;
+}
+
+.about-snowflakes span:nth-child(5) {
+    top: 72%;
+    animation-delay: 2s;
+}
+
+.about-snowflakes span:nth-child(6) {
+    top: 15%;
+    animation-delay: 4s;
+}
+
+.about-snowflakes span:nth-child(7) {
+    top: 85%;
+    animation-delay: 5s;
+}
+
+.about-snowflakes span:nth-child(8) {
+    top: 35%;
+    animation-delay: 6s;
+}
+
+@keyframes floatLeft {
+    0% {
+        left: 5px;
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+
+    50% {
+        left: 40px;
+        opacity: 0.7;
+    }
+
+    100% {
+        left: 5px;
+        opacity: 0;
+        transform: rotate(360deg);
+    }
+}
+
+/* Content */
+.about-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    width: 100%;
+}
+
+.about-title {
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    font-weight: 900;
+    color: #111;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.1;
+}
+
+.about-para {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.75;
+    margin-bottom: 2rem;
+    max-width: 580px;
+}
+
+.about-section-heading {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 0.8rem;
+}
+
+.about-services {
+    display: flex;
+    gap: 3rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.about-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.about-list li {
+    font-size: 0.9rem;
+    color: #333;
+    padding: 0.2rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.about-list li::before {
+    content: '•';
+    color: #e04c4c;
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 2.5rem;
+}
+
+.about-tags span {
+    padding: 0.4rem 1rem;
+    border: 1.5px solid #ccc;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #222;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(4px);
+}
+
+.about-resume-btn {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    border: 1.5px solid #aaa;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #111;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(6px);
+    transition: background 0.2s, transform 0.2s;
+}
+
+.about-resume-btn:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+}
+
+/* =============================================
+   Contact Modal
+   ============================================= */
+.contact-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 4rem 6vw;
+    background: radial-gradient(circle at top right, #f9e98a 0%, #f0c060 30%, #a8d8ea 70%, #d0eaf8 100%);
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(1.04);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.contact-modal.is-open {
+    opacity: 1;
+    pointer-events: all;
+    transform: scale(1);
+}
+
+/* Close button */
+.contact-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    font-size: 2.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #111;
+    line-height: 1;
+    font-weight: 300;
+    transition: transform 0.2s;
+    z-index: 10005;
+    padding: 0.5rem;
+}
+
+.contact-close:hover {
+    transform: scale(1.3) rotate(90deg);
+}
+
+/* Content */
+.contact-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+}
+
+.contact-title {
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    font-weight: 900;
+    color: #111;
+    margin-bottom: 1.2rem;
+    line-height: 1.1;
+    font-family: 'Poppins', sans-serif;
+}
+
+.contact-star {
+    color: #e07c2b;
+    font-size: 0.6em;
+    vertical-align: super;
+}
+
+.contact-email {
+    display: block;
+    font-size: clamp(1.1rem, 3vw, 1.8rem);
+    font-weight: 700;
+    color: #F05F57;
+    margin-bottom: 0;
+    text-decoration: none;
+    transition: transform 0.2s;
+    background: #fff;
+    padding: 0.5rem 1.5rem;
+    border-radius: calc(0.25rem - 2px);
+}
+
+.contact-email:hover {
+    background: #f5f5f5;
+    transform: translateY(-2px);
+}
+
+.contact-subtext {
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: 2rem;
+}
+
+.contact-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.contact-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: calc(0.25rem - 2px);
+    background: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #111;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.contact-link:hover {
+    background: #f5f5f5;
+    transform: translateY(-2px);
+}
+
+/* Snowflakes */
+.contact-snowflakes {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.contact-snowflakes span {
+    position: absolute;
+    font-size: 1.5rem;
+    color: rgba(220, 130, 60, 0.4);
+    animation: snowfall 8s linear infinite;
+}
+
+.contact-snowflakes span:nth-child(1) {
+    left: 70%;
+    animation-delay: 0s;
+    font-size: 1rem;
+}
+
+.contact-snowflakes span:nth-child(2) {
+    left: 80%;
+    animation-delay: 1.5s;
+    font-size: 1.8rem;
+}
+
+.contact-snowflakes span:nth-child(3) {
+    left: 90%;
+    animation-delay: 3s;
+    font-size: 1.2rem;
+}
+
+.contact-snowflakes span:nth-child(4) {
+    left: 75%;
+    animation-delay: 0.7s;
+    font-size: 0.9rem;
+}
+
+.contact-snowflakes span:nth-child(5) {
+    left: 85%;
+    animation-delay: 2.3s;
+    font-size: 2rem;
+}
+
+.contact-snowflakes span:nth-child(6) {
+    left: 65%;
+    animation-delay: 4s;
+    font-size: 1.1rem;
+}
+
+.contact-snowflakes span:nth-child(7) {
+    left: 92%;
+    animation-delay: 5s;
+    font-size: 1.4rem;
+}
+
+.contact-snowflakes span:nth-child(8) {
+    left: 60%;
+    animation-delay: 6s;
+    font-size: 0.8rem;
+}
+
+@keyframes snowfall {
+    0% {
+        top: -5%;
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+
+    100% {
+        top: 105%;
+        opacity: 0;
+        transform: rotate(360deg);
+    }
+}
+
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Hero Section Stretch Text */
+.stretch-h1 {
+    --color-one: hsl(210 80% 50%);
+    --color-two: hsl(320 100% 75%);
+    --stretch-multiplier: 5;
+    font-size: clamp(2rem, 14vmin, 8rem);
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    display: flex;
+    /* Changed from grid to flex to stay inline */
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    gap: 15px;
+    /* Added gap between HANZLA and MASOOD */
+    line-height: 1;
+    color: white;
+    margin-bottom: 24px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.stretch-h1 [aria-hidden="true"] {
+    display: flex;
+    gap: 0.02ch;
+    align-items: center;
+    color: white;
+    justify-content: center;
+}
+
+.stretch-o {
+    height: 1.12ch;
+    width: calc(var(--stretch, 1) * 1.16ch);
+    translate: 0 -0.01ch;
+    border: 0.25ch solid white;
+    border-radius: 1ch;
+    transition: width 0.2s;
+    position: relative;
+}
+
+.stretch-h1 {
+    --stretch: 1;
+}
+
+.stretch-h1:hover {
+    --stretch: var(--stretch-multiplier);
+}
+
+.stretch-o:after,
+.stretch-o:before {
+    content: "";
+    border: 0.25ch solid var(--color);
+    position: absolute;
+    inset: -0.25ch;
+    border-radius: 1ch;
+    opacity: calc(-1 + var(--stretch, 1));
+    transition: opacity 0.2s;
+}
+
+.stretch-o:before {
+    --color: var(--color-one);
+}
+
+.stretch-o:after {
+    --color: var(--color-two);
+    -webkit-mask: radial-gradient(circle at top left, black, transparent);
+    mask: radial-gradient(circle at top left, black, transparent);
+}
+
+@media (max-width: 768px) {
+    .hide-on-mobile {
+        display: none !important;
+    }
+}
